@@ -21,7 +21,7 @@ import UseScanner from "../componentes/useScanner";
            
 <UseScanner/>
 <ScrollView>
-  
+         
  <Image source={require('../assets/logo.jpg')} style={{
               width: '94%',
               height: 222,
@@ -29,8 +29,10 @@ import UseScanner from "../componentes/useScanner";
               marginHorizontal:'3%',
             borderRadius:50
             }}></Image>  
-        
-          
+          <Text style={styles.homeText}>
+            یک نمونه اولیه از اپلیکیشن پیمانکار که صرفا جهت آسان سازی
+             امور سازمانی شرکت مبین نت توسعه داده شده است !
+          </Text>
 
 </ScrollView>
       </LinearGradient>
@@ -61,6 +63,11 @@ linearGradient: {
     color: '#ffffff',
     backgroundColor: 'transparent',
   },
+
+  homeText:{  backgroundColor:'#07961f' ,  color:'#fff' , width:'90%' , marginHorizontal:'5%' ,
+  borderRadius:22, marginTop:33 , padding:10 , lineHeight:33 , fontWeight:'bold' ,fontSize:16 ,
+   borderWidth:3 , borderColor:'#a5cd39'
+  }
 });
 
 
