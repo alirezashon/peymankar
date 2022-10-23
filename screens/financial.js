@@ -128,4 +128,3 @@ profileButtons:{ backgroundColor:'#253025' , paddingVertical:11,  flexDirection:
 
 
 
-
