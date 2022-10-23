@@ -8,31 +8,9 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import HomeScreen from '../screens/home';
 import Upload from '../screens/upload';
-
-function SettingsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
-
-function HomeScreenA() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-<AntDesign name="barschart" size={24} color="black" /> 
-   </View>
-  );
-}
-
-function SettingsScreenA() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
-
+import Locations from '../screens/location';
+import Chart from '../screens/chart';
+import Ticket from '../screens/tickets';
 
 const Tab = createBottomTabNavigator();
 
@@ -43,42 +21,43 @@ export default function Tabe() {
         tabBarShowLabel : false,        
           headerShown:false
       }}>
+          <Tab.Screen 
+              options={{
+          tabBarIcon:() => <MaterialCommunityIcons name="clipboard-check-multiple" size={24} color="#a5cd39" />
+        }}
+        name="چک ست" component={Ticket} 
+        />
+  
+       <Tab.Screen
+              options={{
+          tabBarIcon:() => <FontAwesome5 name="map-marker-alt" size={24} color="#a5cd39" />
+        }}
+       name="مسیریاب" component={Locations} 
+       />
+
+       <Tab.Screen 
+        options={{            tabBarIcon:() => <FontAwesome name="home" size={24} color="#a5cd39" />
+        }}
+          name="خانه " component={HomeScreen} 
+          />   
       
         <Tab.Screen
-         options={{ 
-          tabBarIcon:() => <FontAwesome name="line-chart" size={24} color="#45b5c9" />
+        
+         options={{   
+          tabBarIcon:() => <FontAwesome name="line-chart" size={24} color="#a5cd39" />
         }}
-         name="نمودار" component={SettingsScreen} 
+         name="نمودار" component={Chart} 
         />
 
         <Tab.Screen 
         options={{
-          tabBarIcon:() => <MaterialIcons name="drive-folder-upload" size={24} color="#45b5c9" />
+          tabBarIcon:() => <MaterialIcons name="drive-folder-upload" size={24} color="#a5cd39" />
         }}
           name="فولدربندی" component={Upload} 
           />
 
-           <Tab.Screen 
-        options={{  lazy:true,
-          tabBarIcon:() => <FontAwesome name="home" size={24} color="#45b5c9" />
-        }}
-          name="خانه" component={HomeScreen} 
-          />
-      
-       <Tab.Screen
-              options={{
-          tabBarIcon:() => <FontAwesome5 name="map-marker-alt" size={24} color="#45b5c9" />
-        }}
-       name="مسیریاب" component={HomeScreenA} 
-       />
-      
-        <Tab.Screen 
-              options={{
-          tabBarIcon:() => <MaterialCommunityIcons name="clipboard-check-multiple" size={24} color="#45b5c9" />
-        }}
-        name="چک ست" component={SettingsScreenA} 
-        />
-    
+          
+        
       </Tab.Navigator> 
   );
 }
