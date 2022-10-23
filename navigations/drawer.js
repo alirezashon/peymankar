@@ -1,16 +1,15 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { View, Text , Image , StyleSheet} from 'react-native';
-import Upload from '../screens/upload';
-import Chat from '../screens/chat';
-import Salary from '../screens/salary';
 import Tabe from './tab';
 import  Icon  from 'react-native-vector-icons/FontAwesome';
-
 import {
   DrawerContentScrollView,
   DrawerItemList,
-  DrawerItem,
 } from '@react-navigation/drawer';
+import Profile from '../screens/profile';
+import Recived from '../screens/recived';
+import Archive from '../screens/archive';
+import financial from '../screens/financial';
 
 
 const Drawer = createDrawerNavigator();
@@ -21,12 +20,18 @@ function CustomDrawerContent(props) {
      <View style={styles.profileView}>
        <Image 
 source={require('../assets/me.jpg')}
-style={{width:77 , height:77 , borderRadius:100 }}  
+style={styles.imageProfile}  
   />
   <Text style = {styles.profileText} >
-    Alireza</Text>
+    علیرضا اکبری
+    </Text>
+    
      </View>
       <DrawerItemList {...props} />
+      <Image source={require('../assets/logo.jpg')} style={styles.logo}>
+        </Image>  
+        
+ 
     </DrawerContentScrollView>
   );
 }
@@ -35,51 +40,86 @@ export default function DrawerNav () {
   return (
 
     
- <Drawer.Navigator
-      useLegacyImplementation
+ <Drawer.Navigator  
+      useLegacyImplementation 
       drawerContent={(props) => <CustomDrawerContent {...props} />}
     >
-        <Drawer.Screen name=" " component = {Tabe} />
-        <Drawer.Screen name="مشخصات فردی" component = {Upload} 
-         options={{
-          drawerIcon : ({focused,size})=> (
+
+        <Drawer.Screen name="خانه"  component = {Tabe}  options={{  drawerActiveBackgroundColor:false,
+        drawerActiveTintColor:'#499b01',
+          headerStyle: {
+          backgroundColor: '#499b01',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        drawerIcon : ({focused,size})=> (
           <Icon
            name="home" 
            size={size}
-            color={focused ? '#45b5c9' : '#33b5c9' } 
+          color={focused ? '#a5cd39' : '#499b01' } 
+            /> 
+        ),
+        }} 
+          />
+
+        <Drawer.Screen name="مشخصات فردی" component = {Profile}
+         options={{  drawerActiveBackgroundColor:false, drawerActiveTintColor:'#499b01',
+          headerStyle: { 
+         backgroundColor: '#499b01',},
+        headerTintColor: '#fff',
+
+          drawerIcon : ({focused,size})=> (
+          <Icon
+           name="user" 
+           size={size}
+          color={focused ? '#a5cd39' : '#499b01' } 
             /> 
            ),
         }}
         />
-        <Drawer.Screen name="اجناس امانی" component = {Chat} 
-         options={{
+        <Drawer.Screen name="اجناس امانی" component = {Recived} 
+         options={{ drawerActiveBackgroundColor:false, drawerActiveTintColor:'#499b01',
+          headerStyle: {
+           backgroundColor: '#499b01',},
+        headerTintColor: '#fff',
+  
           drawerIcon : ({focused,size})=> (
           <Icon
            name="barcode" 
            size={size}
-            color={focused ? '#45b5c9' : '#33b5c9' } 
+            color={focused ? '#a5cd39' : '#499b01' } 
             /> 
            ),
         }}
         />
-        <Drawer.Screen name="بایگانی" component = {Salary} 
-         options={{
+        <Drawer.Screen name="بایگانی" component = {Archive} 
+         options={{ drawerActiveBackgroundColor:false, drawerActiveTintColor:'#499b01',
+          headerStyle: {
+           backgroundColor: '#499b01',},
+        headerTintColor: '#fff',
+  
           drawerIcon : ({focused,size})=> (
           <Icon
-           name="file-archive-o" 
+           name="archive" 
            size={size}
-            color={focused ? '#45b5c9' : '#33b5c9' } 
+            color={focused ? '#a5cd39' : '#499b01' } 
             /> 
            ),
         }}
         />
-        <Drawer.Screen name="حسابداری مالی" component = {Salary}
-         options={{
+        <Drawer.Screen name="حسابداری مالی" component = {financial}
+         options={{ drawerActiveBackgroundColor:false, drawerActiveTintColor:'#499b01',
+          headerStyle: {
+           backgroundColor: '#499b01',},
+        headerTintColor: '#fff',
+  
           drawerIcon : ({focused,size})=> (
           <Icon
            name="credit-card" 
            size={size}
-            color={focused ? '#45b5c9' : '#9f45c9' } 
+            color={focused ? '#a5cd39' : '#499b01' } 
             /> 
            ),
         }}
@@ -92,7 +132,20 @@ export default function DrawerNav () {
 
 //استایل دهی به المنت ها
 const styles = StyleSheet.create ({
- profileText:{ marginVertical: 10 ,marginLeft:-12,padding:5 ,borderRadius:33 , backgroundColor:'lightblue', textAlign:'center'
+  logo:{   width: '94%',    height: 222,     marginTop: 20,     marginHorizontal:'3%',
+  },
+
+ profileView : {flex : 1  , justifyContent:'space-between' , flexDirection:'row',
+ borderBottomWidth:0.27 ,  borderColor:'#499b01'  , paddingBottom:17, marginBottom:7,
+},
+
+ profileText:{  alignSelf:'center' , marginRight:22, backgroundColor:'#499b01' , paddingVertical:4,
+ paddingHorizontal:21,    borderRadius:7  , fontWeight:'bold' , color:'#fff'
+ 
  },
- profileView : {flex : 1  ,marginLeft:12, justifyContent:'center'}
+
+ imageProfile:{
+width:77 , height:77 , borderRadius:100 , marginLeft:13  ,   borderWidth:2  , borderColor:'#499b01'
+},
+
 });
