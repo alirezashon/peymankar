@@ -27,6 +27,7 @@ export default function Locations() {
     text = errorMsg;
   } else if (location) {
     text = JSON.stringify(location);
+    
     lat = text.slice(12,22);
     long = text.slice(35,45);
     console.log(location);
