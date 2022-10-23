@@ -135,4 +135,3 @@ const styles = StyleSheet.create({
   textButton:{ textAlign:'center',   color:'#fff', 
   },
 });
-
