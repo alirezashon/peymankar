@@ -7,7 +7,6 @@ export default function Recived () {
 
 <Image source={require('../assets/B612.png')} style={styles.recivedImg}/> 
     <View>
-{/*بهتره که فلکس دایرکشن ستونی استفاده کنی به جای الان که سطری نوشتی */}
       <View style={styles.fieldBox}>
         <Text style={styles.DataLabel}>
  IMEI :      
@@ -98,7 +97,6 @@ DataText:{ backgroundColor:'#e7f850'
 },
 
   });
-
 
 
 
