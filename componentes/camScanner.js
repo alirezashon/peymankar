@@ -17,26 +17,26 @@ export default function CamScanner() {
 
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
-    alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+    alert(`IMEI ${data} اسکن شد`);
   };
 
   if (hasPermission === null) {
-    return <Text>Requesting for camera permission</Text>;
+    return <Text>اجازه دسترسی به دوربین می دهید</Text>;
   }
   if (hasPermission === false) {
-    return <Text>No access to camera</Text>;
+    return <Text>دسترسی صادر نشده</Text>;
   }
 
   return (
     <View style={styles.container}>
-      <BarCodeScanner
-       barCodeScannerSettings={{
+      <BarCodeScanner 
+       barCodeScannerSettings={{ 
     barCodeTypes: [BarCodeScanner.Constants.BarCodeType.qr],
-  }}
+  }} 
         onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
         style={StyleSheet.absoluteFillObject}
       />
-      {scanned && <Button title={'Tap to Scan Again'} onPress={() => setScanned(false)} />}
+      {scanned && <Button title={'اسکن مجدد'} color={'#499b01'} onPress={() => setScanned(false)} />}
     </View>
   );
 }
@@ -48,5 +48,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-
 
